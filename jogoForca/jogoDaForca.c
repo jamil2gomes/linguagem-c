@@ -50,19 +50,19 @@ int ganhou() {
 
 void abertura() {
     printf("/****************/\n");
-    printf("/ Jogo de Forca */\n");
+    printf("/ Hangman Game */\n");
     printf("/****************/\n\n");
 }
 
 void chuta() {
     char chute;
-    printf("Qual letra? ");
+    printf("Choose a letter: ");
     scanf(" %c", &chute);
 
     if(letraexiste(chute)) {
-        printf("Você acertou: a palavra tem a letra %c\n\n", chute);
+        printf("Great! The secrete word has the letter  %c\n\n", chute);
     } else {
-        printf("\nVocê errou: a palavra NÃO tem a letra %c\n\n", chute);
+        printf("\nOps! The secrete word doesn't hace the letter  %c\n\n", chute);
     }
 
     chutes[chutesdados] = chute;
@@ -81,9 +81,7 @@ int jachutou(char letra) {
     return achou;
 }
 
-void desenhaforca() {
-
-    int erros = chuteserrados();
+void desenhaenforcado(int erros){
 
     printf("  _______       \n");
     printf(" |/      |      \n");
@@ -94,6 +92,13 @@ void desenhaforca() {
     printf(" |              \n");
     printf("_|___           \n");
     printf("\n\n");
+}
+
+void forca() {
+
+    int erros = chuteserrados();
+
+    desenhaenforcado(erros);
 
     for(int i = 0; i < strlen(palavrasecreta); i++) {
 
@@ -134,20 +139,20 @@ void escolhepalavra() {
 void adicionapalavra() {
     char quer;
 
-    printf("Você deseja adicionar uma nova palavra no jogo (S/N)?");
+    printf("Would you want to add a new word? (Y/N)?");
     scanf(" %c", &quer);
 
-    if(quer == 'S') {
+    if(quer == 'Y' || quer == 'y' ) {
         char novapalavra[TAMANHO_PALAVRA];
 
-        printf("Digite a nova palavra, em letras maiúsculas: ");
+        printf("Add a new word: ");
         scanf("%s", novapalavra);
 
         FILE* f;
 
         f = fopen("palavras.txt", "r+");
         if(f == 0) {
-            printf("Banco de dados de palavras não disponível\n\n");
+            printf("Database is not available!\n\n");
             exit(1);
         }
 
@@ -168,8 +173,8 @@ void adicionapalavra() {
 
 void desenhacaveira(){
 
-     printf("\nPuxa, você foi enforcado!\n");
-        printf("A palavra era **%s**\n\n", palavrasecreta);
+     printf("\nOH GEEZ, YOU LOSE!\n");
+        printf("THE SECRETE WORD WAS  **%s**\n\n", palavrasecreta);
 
         printf("    _______________         \n");
         printf("   /               \\       \n"); 
@@ -190,7 +195,7 @@ void desenhacaveira(){
 }
 
 void desenhatrofeu(){
- printf("\nParabéns, você ganhou!\n\n");
+ printf("\nCONGRATS! YOU WIN!\n\n");
 
         printf("       ___________      \n");
         printf("      '._==_==_=_.'     \n");
@@ -214,7 +219,7 @@ int main() {
 
     do {
 
-        desenhaforca();
+        forca();
         chuta();
 
     } while (!ganhou() && !enforcou());

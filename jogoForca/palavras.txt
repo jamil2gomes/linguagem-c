@@ -1,5 +1,6 @@
-4
-abacaxi
-melancia
+5
+orange
 banana
-laranja
+apple
+strawberry
+lemon

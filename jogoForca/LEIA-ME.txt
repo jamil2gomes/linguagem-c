@@ -1,0 +1,49 @@
+Explicação das funções do jogo da forca.
+
+
+função escolhepalavra():
+
+As palavras que serão usadas estão num arquivo chamado palavras.pxt.
+Essa função abre tal arquivo no modo só de leitura ("r").
+Se ocorrer algum erro, tal como, arquivo não pôde ser encontrado ou usado então ele imprime 
+uma mensagem e encerra a aplicação (exit(1);)
+
+Cria-se uma variavel pra saber a quantidade de palavras que existe no arquivo a primeira linha 
+desse arquivo nos diz quantas existem.
+Então, lê essa quantidade e a atribue para a variavel
+Em seguida é sorteada aleatóriamente uma dessas palavras e atribuída a variavel "palavrasecreta".
+
+---------------------------------------------------------------------------------------------
+
+função chuta():
+
+jogador é solicitado a escolher uma letra que é verificada se existe ou não na palavrasecreta 
+atravéz da função letraexiste(). A cada chute dado é adicionado ao vetor chutes.
+
+---------------------------------------------------------------------------------------------
+
+função forca():
+
+a quantidade de erro é contada com a função chuteserrados()
+o desenho do enforcado é feito com a função desenhaenforcado(int erros)
+
+Caso acerte a letra essa mesma letra aparece no lugar em que deveria estar na palavrasecreta.
+O resto é completado com "_".
+--------------------------------------------------------------------------------------------
+
+função jachutou():
+
+percorre todo o vetor de chutes e compara com a letra recebida, se existir então retorna 1 
+se nao retorna 0.
+
+---------------------------------------------------------------------------------------------
+
+função desenhaenforcado():
+
+caso erre uma vez a cabeça do boneco aparece
+2 vezes o corpo aparece
+3 vezes os braços
+4 vezes os palavrasecreta
+5 vezes game over
+
+----------------------------------------------------------------------------------------------

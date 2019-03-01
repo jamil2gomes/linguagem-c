@@ -7,11 +7,12 @@ void abertura();
 void chuta();
 int jachutou(char letra);
 int ganhou();
-void desenhaforca();
+void forca();
 void escolhepalavra();
 int chuteserrados();
 void desenhacaveira();
 void desenhatrofeu();
+void desenhaenforcado(int erros);
 
 
 
